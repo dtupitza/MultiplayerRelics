@@ -18,7 +18,7 @@ public class Periscope() : MultiplayerRelicsRelic
 
     public override async Task AfterObtained()
     {
-        var players = RunManagerRunManager.Instance.State?.Players;
+        var players = RunManager.Instance.State?.Players;
         if (players == null) return;
 
         var cards = players.SelectMany(p => p.Deck.Cards).ToList();
