@@ -64,8 +64,10 @@ public class WelcomeMat() : MultiplayerRelicsRelic
         var target = cardPlay.Target;
         foreach (var ally in allies)
         {
-            var copy = card.CreateDupe();
+            var copy = Owner.RunState.CloneCard(card);
             copy._owner = ally.Player;
+
+            await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Draw, ally.Player, CardPilePosition.Random);
 
             Creature? copyTarget = card.TargetType switch
             {
